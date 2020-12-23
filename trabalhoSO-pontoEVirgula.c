@@ -58,6 +58,12 @@ void *thr_Hidrogenio()
         pthread_mutex_unlock(&mutex);
       }
     }
+    else
+    {
+      pthread_mutex_lock(&mutex);
+      pthread_cond_wait(&pthread_condA, &mutex);
+      pthread_mutex_unlock(&mutex);
+    }
   }
   return 0;
 }
@@ -79,6 +85,12 @@ void *thr_Enxofre()
       threadAtual = threadC;
       pthread_mutex_lock(&mutex);
       pthread_cond_signal(&pthread_condC);
+      pthread_mutex_unlock(&mutex);
+    }
+    else
+    {
+      pthread_mutex_lock(&mutex);
+      pthread_cond_wait(&pthread_condB, &mutex);
       pthread_mutex_unlock(&mutex);
     }
   }
@@ -119,6 +131,12 @@ void *thr_Oxigenio()
         pthread_cond_signal(&pthread_condA);
         pthread_mutex_unlock(&mutex);
       }
+    }
+    else
+    {
+      pthread_mutex_lock(&mutex);
+      pthread_cond_wait(&pthread_condC, &mutex);
+      pthread_mutex_unlock(&mutex);
     }
   }
 }
