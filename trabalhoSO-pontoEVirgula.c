@@ -147,10 +147,11 @@ void *thr_Oxigenio()
 
 int main(int argc, char *argv[])
 {
-  qntLinhasDesejada = atoi(argv[1]);
 
-  if (argv[1] != NULL && qntLinhasDesejada > 0)
+  if (argv[1] != NULL && atoi(argv[1]) > 0)
   {
+    qntLinhasDesejada = atoi(argv[1]);
+
     pthread_t threadHidrogenio, threadEnxofre, threadOxigenio;
 
     pthread_create(&threadHidrogenio, NULL, thr_Hidrogenio, NULL);
