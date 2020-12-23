@@ -107,7 +107,7 @@ void *thr_Oxigenio()
 }
 int main(int argc, char *argv[])
 {
-  if (argv[1] != NULL)
+  if (argv[1] != NULL && atoi(argv[1]) > 0)
   {
     qntLinhasDesejada = atoi(argv[1]);
 
@@ -123,6 +123,6 @@ int main(int argc, char *argv[])
   }
   else
   {
-    printf("Por favor, preencha o argumento de quantidade de linhas.\n");
+    printf("Por favor, preencha o argumento de quantidade de linhas com um numero maior que 0.\n");
   }
 }
